@@ -136,7 +136,7 @@ export const CHAPTERS: Chapter[] = [
         highlights: [
           "Confirming readiness before asking QC to test",
           "Giving QC scope context and known edge cases",
-          "Routing QC feedback to the right owner quickly",
+          // "Routing QC feedback to the right owner quickly",
         ],
       },
     ],
@@ -186,9 +186,9 @@ export const CHAPTERS: Chapter[] = [
 
   // ── Chapter 3: Hands-on impact ─────────────────────────────────────────────
   {
-    id:     "chapter-3",
-    label:  "Hands-on impact",
-    title:  "Owning the hardest work and the messy edges",
+    id: "chapter-3",
+    label: "Hands-on impact",
+    title: "Owning the hardest work and the messy edges",
     period: "Youngest member, largest responsibility",
     description:
       "Being the youngest member on the team but trusted with lead responsibilities made me feel a strong sense of accountability. I intentionally took on the hardest tasks when distributing work, and actively picked up bug fixes to build a deeper understanding of the full project — not just my own slice of it.",
@@ -236,11 +236,13 @@ export const CHAPTERS: Chapter[] = [
 export type Concern = {
   title: string;
   bullets: readonly string[];
+  planRef: string;
 };
 
 export const CONCERNS: Concern[] = [
   {
-    title: "Finding my footing as a lead",
+    title: "How to prove leadership capability?",
+    planRef: "01",
     bullets: [
       "Youngest on the team while taking on lead responsibilities — real pressure to perform.",
       "Juggling alignment, clear communication, and not becoming a bottleneck.",
@@ -249,14 +251,16 @@ export const CONCERNS: Concern[] = [
   },
   {
     title: "No clear benchmark to grow toward",
+    planRef: "02",
     bullets: [
       "No internal picture yet of what counts as a strong SWE vs a strong lead here.",
       "Hard to prioritise gaps — depth, process, or people — without a shared rubric.",
-      "Clearer expectations from leadership would help me aim effort on purpose, not by guessing.",
+      // "Clearer expectations from leadership would help me aim effort on purpose, not by guessing.",
     ],
   },
   {
     title: "Balancing AI-assisted delivery with real understanding",
+    planRef: "04",
     bullets: [
       "AI helps the team ship faster; I want to use that responsibly, not blindly.",
       "Watching for the trap of speed replacing real understanding of the system.",
@@ -281,31 +285,31 @@ export const GOALS: Goal[] = [
     number: "01",
     title: "Take ownership of the lead role officially",
     bullets: [
-      "Move from informal lead work to formally earning the scope.",
-      "Level up risk communication, mentoring, and judgment under accountability.",
-      "Demonstrate the bar consistently, not only in crunch moments.",
+      // "Leave this review with a clear answer: is the lead scope mine to grow into, or does it stay informal?",
+      "Prove leadership through shipped quality — track P0/P1 bugs per feature.",
+      "Not just owning individual tasks, but structuring feature delivery, aligning priorities, and ensuring dependencies are sequenced before sprint start.",
     ],
   },
   {
     number: "02",
     title: "Get a clear growth benchmark from leadership",
     bullets: [
-      "Use this review to ask for a concrete picture of strong SWE and lead here.",
-      "Agree expectations with leadership, then hold monthly self check-ins.",
-      "Measure progress against that bar instead of guessing what matters most.",
+      "Use this review to align on what the company needs from this role — not just what I want to grow into.",
+      "Get a concrete picture of what 'strong lead' looks like here, then map my gaps honestly against it.",
+      "Agree a 6-month check-in with leadership to measure whether my direction matches what the team needs.",
     ],
   },
+  // {
+  //   number: "03",
+  //   title: "Sharpen time management and estimation",
+  //   bullets: [
+  //     "Time-block the calendar to protect deep-work windows.",
+  //     "Cap active tickets to reduce context switching.",
+  //     "Compare sprint estimates vs actuals and tighten planning over time.",
+  //   ],
+  // },
   {
     number: "03",
-    title: "Sharpen time management and estimation",
-    bullets: [
-      "Time-block the calendar to protect deep-work windows.",
-      "Cap active tickets to reduce context switching.",
-      "Compare sprint estimates vs actuals and tighten planning over time.",
-    ],
-  },
-  {
-    number: "04",
     title: "Build deeper technical foundations alongside AI usage",
     bullets: [
       "Rule: I only ship what I can explain — no hand-waving AI output.",

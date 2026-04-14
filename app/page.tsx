@@ -4,8 +4,8 @@ import { ChapterTabs } from "@/components/chapter-tabs";
 import { MilestoneCard } from "@/components/milestone-card";
 import { ProjectIntro } from "@/components/project-intro";
 import { KpiGrid } from "@/components/kpi-grid";
-import { ConcernCard } from "@/components/concern-card";
 import { GoalCard } from "@/components/goal-card";
+import { ConcernFlow } from "@/components/concern-flow";
 import { FeatureCard } from "@/components/feature-card";
 import { CommitComparison } from "@/components/commit-comparison";
 import {
@@ -22,8 +22,8 @@ import {
 const NAV_ITEMS = [
   ...CHAPTERS.map(({ id, label }) => ({ id, label })),
   { id: "featured-work", label: "Featured Work" },
-  { id: "concerns",      label: "Concerns"      },
-  { id: "whats-next",    label: "What's next"   },
+  { id: "concerns",      label: "Concerns & Solutions"      },
+  // { id: "whats-next",    label: "Next steps"    },
 ];
 
 export default function Home() {
@@ -203,21 +203,14 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-10 space-y-4">
-            {CONCERNS.map((c, i) => (
-              <ConcernCard
-                key={c.title}
-                title={c.title}
-                bullets={c.bullets}
-                index={i}
-              />
-            ))}
+          <div className="mt-10">
+            <ConcernFlow concerns={CONCERNS} goals={GOALS} />
           </div>
         </div>
       </section>
 
       {/* ── What's next ─────────────────────────────────────── */}
-      <section
+      {/* <section
         id="whats-next"
         className="scroll-mt-20 border-t border-border/80 bg-gradient-to-b from-accent/35 via-background to-secondary/20 py-24"
       >
@@ -228,7 +221,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-2 text-3xl font-bold">What&apos;s next — H2 2026</h2>
+            <h2 className="mt-2 text-3xl font-bold">Next steps — H2 2026</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 max-w-lg text-muted-foreground">
@@ -238,17 +231,22 @@ export default function Home() {
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {GOALS.map((g, i) => (
-              <GoalCard
+              <div
                 key={g.number}
-                number={g.number}
-                title={g.title}
-                bullets={g.bullets}
-                index={i}
-              />
+                id={`goal-${g.number}`}
+                className="goal-anchor scroll-mt-28"
+              >
+                <GoalCard
+                  number={g.number}
+                  title={g.title}
+                  bullets={g.bullets}
+                  index={i}
+                />
+              </div>
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

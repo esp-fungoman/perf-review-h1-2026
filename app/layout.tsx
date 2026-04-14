@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
+import "@xyflow/react/dist/base.css";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
 import { ScrollProgress } from "@/components/scroll-progress";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const heading = Plus_Jakarta_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+});
+const body = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -22,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`${heading.variable} ${body.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <LenisProvider>

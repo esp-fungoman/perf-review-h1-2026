@@ -111,9 +111,9 @@ export function FeatureCard({ feature, index }: FeatureCardProps) {
         {/* ── Text side ────────────────────────────────────────── */}
         <div className="flex-1 space-y-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            {/* <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               {feature.users}
-            </p>
+            </p> */}
             <h3 className="mt-1 text-2xl font-bold leading-snug">
               {feature.title}
             </h3>
@@ -126,13 +126,13 @@ export function FeatureCard({ feature, index }: FeatureCardProps) {
             {feature.description}
           </p>
 
-          <div className="flex flex-wrap gap-2 pt-1">
+          {/* <div className="flex flex-wrap gap-2 pt-1">
             {feature.tags.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
