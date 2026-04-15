@@ -295,8 +295,9 @@ export const GOALS: Goal[] = [
     title: "Get a clear growth benchmark from leadership",
     bullets: [
       "Use this review to align on what the company needs from this role — not just what I want to grow into.",
-      "Get a concrete picture of what 'strong lead' looks like here, then map my gaps honestly against it.",
-      "Agree a 6-month check-in with leadership to measure whether my direction matches what the team needs.",
+      "Combine with roadmap planning to set clear goals and measure progress.",
+      // "Get a concrete picture of what 'strong lead' looks like here, then map my gaps honestly against it.",
+      // "Agree a 6-month check-in with leadership to measure whether my direction matches what the team needs.",
     ],
   },
   // {
@@ -314,7 +315,7 @@ export const GOALS: Goal[] = [
     bullets: [
       "Rule: I only ship what I can explain — no hand-waving AI output.",
       "Reserve sprint time for unassisted deep dives in the codebase.",
-      "Use AI to accelerate, not to skip owning the system mentally.",
+      "Use AI to accelerate, not to skip understanding the system.",
     ],
   },
 ];
