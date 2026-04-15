@@ -393,5 +393,5 @@ export const PEBBLES_PROJECT = {
   scope: "FE · BE · Admin · Analytics · Landing Pages",
   period: "Aug 2025 – Apr 2026",
   summary:
-    "Pebbles is a multi-repo consumer health and lifestyle platform built by Eastplayers. Over six months I contributed across the full product surface — from bootstrapping core systems to shipping key features and supporting team delivery.",
+    "Pebbles is a multi-repo consumer health and lifestyle platform. Over six months I contributed across the full product surface — from bootstrapping core systems to shipping key features and supporting team delivery.",
 } as const;

@@ -4,7 +4,6 @@ import { ChapterTabs } from "@/components/chapter-tabs";
 import { MilestoneCard } from "@/components/milestone-card";
 import { ProjectIntro } from "@/components/project-intro";
 import { KpiGrid } from "@/components/kpi-grid";
-import { GoalCard } from "@/components/goal-card";
 import { ConcernFlow } from "@/components/concern-flow";
 import { FeatureCard } from "@/components/feature-card";
 import { CommitComparison } from "@/components/commit-comparison";
@@ -20,9 +19,10 @@ import {
 
 // All scroll targets for the sticky nav
 const NAV_ITEMS = [
-  ...CHAPTERS.map(({ id, label }) => ({ id, label })),
-  { id: "featured-work", label: "Featured Work" },
-  { id: "concerns",      label: "Concerns & Solutions"      },
+  { id: "chapter-1", label: "Responsibilities & Scope" },
+  { id: "metrics", label: "Engineering Impact" },
+  { id: "featured-work", label: "Key Features Shipped" },
+  { id: "concerns", label: "Risks, Concerns & Mitigations" },
   // { id: "whats-next",    label: "Next steps"    },
 ];
 
@@ -86,6 +86,10 @@ export default function Home() {
           />
         </div>
 
+        <Reveal delay={0.05}>
+          <h2 className="mt-10 text-3xl font-bold mb-8">Responsibilities and scope</h2>
+        </Reveal>
+
         <div className="relative">
           {/* Vertical timeline line */}
           <div
@@ -104,7 +108,9 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     {chapter.period}
                   </p>
-                  <h2 className="mt-1 text-3xl font-bold">{chapter.title}</h2>
+                  <h2 className="mt-1 text-3xl font-bold">
+                    {i === 0 ? "Discovery & planning" : chapter.title}
+                  </h2>
                 </Reveal>
 
                 {/* Milestones — title + bullets only */}
@@ -139,6 +145,9 @@ export default function Home() {
               By the numbers
             </p>
           </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="mt-2 text-3xl font-bold">Engineering Impact</h2>
+          </Reveal>
           <KpiGrid cards={KPI_CARDS} />
 
           <CommitComparison
@@ -160,7 +169,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-2 text-3xl font-bold">Featured Work</h2>
+            <h2 className="mt-2 text-3xl font-bold">Key Features Shipped</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 max-w-lg text-muted-foreground">
@@ -195,7 +204,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-2 text-3xl font-bold">Work-related concerns</h2>
+            <h2 className="mt-2 text-3xl font-bold">Risks, Concerns & Mitigations</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 text-muted-foreground">

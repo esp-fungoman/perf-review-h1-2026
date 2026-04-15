@@ -13,7 +13,14 @@ interface ProjectIntroProps {
   summary: string;
 }
 
-export function ProjectIntro({ name, logoPath, role, scope, period, summary }: ProjectIntroProps) {
+export function ProjectIntro({
+  name,
+  logoPath,
+  role,
+  scope,
+  period,
+  summary,
+}: ProjectIntroProps) {
   return (
     <Reveal>
       <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-border/90 border-t-4 border-t-primary bg-gradient-to-b from-card to-muted/25 px-8 py-7 shadow-md shadow-primary/5 ring-1 ring-primary/7">
@@ -37,22 +44,24 @@ export function ProjectIntro({ name, logoPath, role, scope, period, summary }: P
             <h3 className="mt-0.5 text-2xl font-bold">{name}</h3>
 
             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground">
-              <span>
+              {/* <span>
                 <span className="font-medium text-foreground">Role:</span> {role}
-              </span>
-              <span>
+              </span> */}
+              {/* <span>
                 <span className="font-medium text-foreground">Scope:</span> {scope}
-              </span>
-              <span>
+              </span> */}
+              {/* <span>
                 <span className="font-medium text-foreground">Period:</span> {period}
-              </span>
+              </span> */}
             </div>
           </div>
         </div>
 
         <Separator className="my-5" />
 
-        <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {summary}
+        </p>
       </div>
     </Reveal>
   );
