@@ -22,7 +22,7 @@ const NAV_ITEMS = [
   { id: "chapter-1", label: "Responsibilities & Scope" },
   { id: "metrics", label: "Engineering Impact" },
   { id: "featured-work", label: "Key Features Shipped" },
-  { id: "concerns", label: "Risks, Concerns & Mitigations" },
+  { id: "concerns", label: "Concerns & Mitigations" },
   // { id: "whats-next",    label: "Next steps"    },
 ];
 
@@ -57,7 +57,8 @@ export default function Home() {
         </Reveal>
         <Reveal delay={0.35}>
           <p className="mt-6 max-w-xxl text-lg text-muted-foreground">
-            A look at what I contributed, how I supported the team, and what I want to grow into.
+            A look at what I contributed, how I supported the team, and what I
+            want to grow into.
           </p>
         </Reveal>
         <Reveal delay={0.5}>
@@ -87,7 +88,9 @@ export default function Home() {
         </div>
 
         <Reveal delay={0.05}>
-          <h2 className="mt-10 text-3xl font-bold mb-8">Responsibilities and scope</h2>
+          <h2 className="mt-10 text-3xl font-bold mb-8">
+            Responsibilities and scope
+          </h2>
         </Reveal>
 
         <div className="relative">
@@ -173,7 +176,8 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 max-w-lg text-muted-foreground">
-              Three of the standout features I contributed to across the Pebbles product.
+              Three of the standout features I contributed to across the Pebbles
+              product.
             </p>
           </Reveal>
 
@@ -204,7 +208,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-2 text-3xl font-bold">Risks, Concerns & Mitigations</h2>
+            <h2 className="mt-2 text-3xl font-bold">Concerns & Mitigations</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 text-muted-foreground">
