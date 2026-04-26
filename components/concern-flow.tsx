@@ -61,12 +61,6 @@ type SatelliteNodeData = {
   text: string;
 };
 
-function truncate(text: string, words = 7): string {
-  const parts = text.split(" ");
-  if (parts.length <= words) return text;
-  return parts.slice(0, words).join(" ") + "…";
-}
-
 function planBullets(
   concern: Concern,
   goalByNumber: Map<string, Goal>,
@@ -167,7 +161,7 @@ function ConcernNode({ data }: NodeProps<Node<ConcernNodeData>>) {
         className="!size-2 !border-2 !border-background !bg-primary"
       />
       <p className="text-balance text-base font-semibold leading-snug text-foreground">
-        {truncate(concern.title, 8)}
+        {concern.title}
       </p>
     </div>
   );

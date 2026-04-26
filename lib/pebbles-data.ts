@@ -259,12 +259,12 @@ export const CONCERNS: Concern[] = [
     ],
   },
   {
-    title: "Balancing AI-assisted delivery with real understanding",
+    title: "The LLM Fallacy: shipping code I can't fully defend",
     planRef: "04",
     bullets: [
-      "AI helps the team ship faster; I want to use that responsibly, not blindly.",
-      "Watching for the trap of speed replacing real understanding of the system.",
-      "Still tuning the balance: accelerate with AI without letting it cap my growth.",
+      "I prompt AI, it codes — I commit it. I felt like I owned it, but did I really?",
+      "The real risk: everyone feels they understand the codebase, until it breaks and nobody can fix it.",
+      "My rule: I only ship what I can explain and defend — with or without AI available.",
     ],
   },
 ];

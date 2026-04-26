@@ -10,11 +10,12 @@ interface ConcernMindMapProps {
   index: number;
 }
 
-const CENTER_R = 52;   // center node radius px
+const CENTER_HUB_W = 200;  // max width of title hub (rounded rect), px
+const CENTER_HUB_MIN_H = 80;  // min height for multi-line title
 const SAT_R    = 44;   // satellite node radius px
 const RADIUS   = 168;  // distance from center to satellite center
 
-// Truncate a string to the first `n` words
+// Truncate a string to the first `n` words (for satellite text only; titles stay full)
 function truncate(text: string, words = 6): string {
   const parts = text.split(" ");
   if (parts.length <= words) return text;
@@ -27,21 +28,48 @@ function fanPositions(n: number, startDeg = -60, endDeg = 60) {
   return Array.from({ length: n }, (_, i) => startDeg + ((endDeg - startDeg) / (n - 1)) * i);
 }
 
-// Compute line endpoints offset by node radii so lines start/end at node edges
+// Ray from center (cx, cy) toward (tx, ty) exits an axis-aligned rect
+// [cx - halfW, cx + halfW] × [cy - halfH, cy + halfH] at the nearest boundary point.
+function rectExit(
+  cx: number,
+  cy: number,
+  tx: number,
+  ty: number,
+  halfW: number,
+  halfH: number,
+): { x: number; y: number } {
+  const dx = tx - cx;
+  const dy = ty - cy;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const ux = dx / dist;
+  const uy = dy / dist;
+  let t = Infinity;
+  if (ux > 1e-9) t = Math.min(t, halfW / ux);
+  if (ux < -1e-9) t = Math.min(t, -halfW / ux);
+  if (uy > 1e-9) t = Math.min(t, halfH / uy);
+  if (uy < -1e-9) t = Math.min(t, -halfH / uy);
+  if (!isFinite(t) || t < 0) t = 0;
+  return { x: cx + ux * t, y: cy + uy * t };
+}
+
+// Line start at hub rect edge, end on satellite circle
 function lineEndpoints(
   cx: number,
   cy: number,
   sx: number,
   sy: number,
+  halfHubW: number,
+  halfHubH: number,
 ): { x1: number; y1: number; x2: number; y2: number } {
+  const start = rectExit(cx, cy, sx, sy, halfHubW, halfHubH);
   const dx = sx - cx;
   const dy = sy - cy;
   const dist = Math.sqrt(dx * dx + dy * dy) || 1;
   const ux = dx / dist;
   const uy = dy / dist;
   return {
-    x1: cx + ux * CENTER_R,
-    y1: cy + uy * CENTER_R,
+    x1: start.x,
+    y1: start.y,
     x2: sx - ux * SAT_R,
     y2: sy - uy * SAT_R,
   };
@@ -60,11 +88,13 @@ export function ConcernMindMap({ concern, goal, index }: ConcernMindMapProps) {
   const cx = W / 2;
   const cy = 118;
 
+  const halfHubW = CENTER_HUB_W / 2;
+  const halfHubH = CENTER_HUB_MIN_H / 2;
   const satellites = angles.map((deg, i) => {
     const rad = (deg * Math.PI) / 180;
     const sx  = cx + RADIUS * Math.cos(rad);
     const sy  = cy + RADIUS * Math.sin(rad);
-    return { sx, sy, bullet: bullets[i], line: lineEndpoints(cx, cy, sx, sy) };
+    return { sx, sy, bullet: bullets[i], line: lineEndpoints(cx, cy, sx, sy, halfHubW, halfHubH) };
   });
 
   return (
@@ -103,30 +133,29 @@ export function ConcernMindMap({ concern, goal, index }: ConcernMindMapProps) {
         </svg>
 
         {/* Center node */}
-        <motion.div
-          className="absolute flex flex-col items-center justify-center rounded-full border-2 border-primary/70 bg-card text-center shadow-md shadow-primary/10 ring-4 ring-primary/10"
-          style={{
-            width:  CENTER_R * 2,
-            height: CENTER_R * 2,
-            left:   cx - CENTER_R,
-            top:    cy - CENTER_R,
-          }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 200, damping: 18, delay: 0 }}
+        <div
+          className="absolute"
+          style={{ left: cx, top: cy, transform: "translate(-50%, -50%)" }}
         >
-          <span className="px-2 text-[10px] font-semibold leading-tight text-foreground/80">
-            {truncate(concern.title, 4)}
-          </span>
-          {concern.planRef && (
-            <a
-              href={`#goal-${concern.planRef}`}
-              className="mt-0.5 text-[9px] font-semibold text-primary/70 hover:text-primary"
-            >
-              plan #{concern.planRef}
-            </a>
-          )}
-        </motion.div>
+          <motion.div
+            className="flex w-[200px] min-h-[80px] max-w-[min(200px,100%-1rem)] flex-col items-center justify-center rounded-2xl border-2 border-primary/70 bg-card text-center shadow-md shadow-primary/10 ring-4 ring-primary/10"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18, delay: 0 }}
+          >
+            <span className="px-2 py-1 text-balance text-[10px] font-semibold leading-tight text-foreground/80">
+              {concern.title}
+            </span>
+            {concern.planRef && (
+              <a
+                href={`#goal-${concern.planRef}`}
+                className="mt-0.5 text-[9px] font-semibold text-primary/70 hover:text-primary"
+              >
+                plan #{concern.planRef}
+              </a>
+            )}
+          </motion.div>
+        </div>
 
         {/* Satellite nodes */}
         {satellites.map(({ sx, sy, bullet }, i) => (
