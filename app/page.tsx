@@ -7,6 +7,7 @@ import { KpiGrid } from "@/components/kpi-grid";
 import { ConcernFlow } from "@/components/concern-flow";
 import { FeatureCard } from "@/components/feature-card";
 import { CommitComparison } from "@/components/commit-comparison";
+import { GoalCard } from "@/components/goal-card";
 import {
   CHAPTERS,
   PEBBLES_PROJECT,
@@ -23,7 +24,7 @@ const NAV_ITEMS = [
   { id: "metrics", label: "Engineering Impact" },
   { id: "featured-work", label: "Key Features Shipped" },
   { id: "concerns", label: "Concerns & Mitigations" },
-  // { id: "whats-next",    label: "Next steps"    },
+  { id: "whats-next", label: "What's next" },
 ];
 
 export default function Home() {
@@ -223,26 +224,26 @@ export default function Home() {
       </section>
 
       {/* ── What's next ─────────────────────────────────────── */}
-      {/* <section
+      <section
         id="whats-next"
         className="scroll-mt-20 border-t border-border/80 bg-gradient-to-b from-accent/35 via-background to-secondary/20 py-24"
       >
-        <div className="mx-auto max-w-3xl px-6">
+        <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Looking ahead
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-2 text-3xl font-bold">Next steps — H2 2026</h2>
+            <h2 className="mt-2 text-3xl font-bold">Next 6 months</h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-3 max-w-lg text-muted-foreground">
-              Goals and areas I want to grow into over the second half of the year.
+            <p className="mt-3 max-w-2xl text-muted-foreground">
+              May – Oct 2026 · Three goals I&apos;m committing to.
             </p>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {GOALS.map((g, i) => (
               <div
                 key={g.number}
@@ -259,7 +260,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }

@@ -14,7 +14,7 @@
 
 export const GITHUB_STATS = {
   /** My commits across all pebbles-* repos (from GitHub contributor graphs) */
-  myCommits: 536,
+  myCommits: 556,
   /** Total commits across all pebbles-* repos (all authors, from GitHub) */
   totalCommits: 1364,
   /** My share as a percentage */
@@ -22,8 +22,8 @@ export const GITHUB_STATS = {
 
   /** Per-repo breakdown — mine vs total (from GitHub contributor graphs) */
   commitsByRepo: [
-    { repo: "pebbles-fe", mine: 171, total: 348 },
-    { repo: "pebbles-be", mine: 150, total: 387 },
+    { repo: "pebbles-fe", mine: 181, total: 368 },
+    { repo: "pebbles-be", mine: 160, total: 397 },
     { repo: "pebbles-admin", mine: 84, total: 167 },
     { repo: "pebbles-lp", mine: 61, total: 163 },
     { repo: "pebbles-portal", mine: 41, total: 187 },
@@ -270,8 +270,7 @@ export const CONCERNS: Concern[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// What's next — goals for H2 2026
-// Fill in from your script.
+// What's next — next 6 months (May – Oct 2026)
 // ---------------------------------------------------------------------------
 
 export type Goal = {
@@ -283,39 +282,30 @@ export type Goal = {
 export const GOALS: Goal[] = [
   {
     number: "01",
-    title: "Take ownership of the lead role officially",
+    title: "Officially lead the Pebbles team",
     bullets: [
-      // "Leave this review with a clear answer: is the lead scope mine to grow into, or does it stay informal?",
-      "Prove leadership through shipped quality — track P0/P1 bugs per feature.",
-      "Not just owning individual tasks, but structuring feature delivery, aligning priorities, and ensuring dependencies are sequenced before sprint start.",
+      "Formalise the Tech Lead title — not just responsibilities in practice.",
+      "Turn user signals into roadmap bets; bridge engineering and product for what's actually useful.",
+      // "Own roadmap, sprint planning, and team delivery end-to-end.",
     ],
   },
   {
     number: "02",
-    title: "Get a clear growth benchmark from leadership",
+    title: "Launch Pebbles to GTM — reach 1,000 users",
     bullets: [
-      "Use this review to align on what the company needs from this role — not just what I want to grow into.",
-      "Combine with roadmap planning to set clear goals and measure progress.",
-      // "Get a concrete picture of what 'strong lead' looks like here, then map my gaps honestly against it.",
-      // "Agree a 6-month check-in with leadership to measure whether my direction matches what the team needs.",
+      "Ship a production-ready release across all platforms.",
+      "Track activation and retention from day one of launch.",
+      "Hit 10,000 active users as fast as possible post-launch.",
     ],
   },
-  // {
-  //   number: "03",
-  //   title: "Sharpen time management and estimation",
-  //   bullets: [
-  //     "Time-block the calendar to protect deep-work windows.",
-  //     "Cap active tickets to reduce context switching.",
-  //     "Compare sprint estimates vs actuals and tighten planning over time.",
-  //   ],
-  // },
   {
     number: "03",
-    title: "Build deeper technical foundations alongside AI usage",
+    title:
+      "Build a long-term stake — own uncertainty, not just scoped delivery",
     bullets: [
-      "Rule: I only ship what I can explain — no hand-waving AI output.",
-      "Reserve sprint time for unassisted deep dives in the codebase.",
-      "Use AI to accelerate, not to skip understanding the system.",
+      "Commit to contributing over the long term — grow with the company, not quarter-to-quarter.",
+      "Take ownership in ambiguous or high-risk moments when the path isn't fully paved.",
+      "Stay effective under pressure — depth, people friction, or delivery crunch.",
     ],
   },
 ];
