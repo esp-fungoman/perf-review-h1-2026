@@ -282,33 +282,43 @@ export type Goal = {
 export const GOALS: Goal[] = [
   {
     number: "01",
-    title: "Officially lead the Pebbles team",
+    title: "Take ownership of the lead role officially",
     bullets: [
-      "Formalise the Tech Lead title — not just responsibilities in practice.",
-      "Turn user signals into roadmap bets; bridge engineering and product for what's actually useful.",
-      // "Own roadmap, sprint planning, and team delivery end-to-end.",
+      // "Leave this review with a clear answer: is the lead scope mine to grow into, or does it stay informal?",
+      "Prove leadership through shipped quality — track P0/P1 bugs per feature.",
+      "Not just owning individual tasks, but structuring feature delivery, aligning priorities, and ensuring dependencies are sequenced before sprint start.",
     ],
   },
   {
     number: "02",
-    title: "Launch Pebbles to GTM — reach 10,000 users",
+    title: "Get a clear growth benchmark from leadership",
     bullets: [
-      "Ship a production-ready release across all platforms.",
-      "Track activation and retention from day one of launch.",
-      "Hit 10,000 active users as fast as possible post-launch.",
+      "Use this review to align on what the company needs from this role — not just what I want to grow into.",
+      "Combine with roadmap planning to set clear goals and measure progress.",
+      // "Get a concrete picture of what 'strong lead' looks like here, then map my gaps honestly against it.",
+      // "Agree a 6-month check-in with leadership to measure whether my direction matches what the team needs.",
     ],
   },
+  // {
+  //   number: "03",
+  //   title: "Sharpen time management and estimation",
+  //   bullets: [
+  //     "Time-block the calendar to protect deep-work windows.",
+  //     "Cap active tickets to reduce context switching.",
+  //     "Compare sprint estimates vs actuals and tighten planning over time.",
+  //   ],
+  // },
   {
     number: "03",
-    title:
-      "Build a long-term stake — own uncertainty, not just scoped delivery",
+    title: "Build deeper technical foundations alongside AI usage",
     bullets: [
-      "Commit to contributing over the long term — grow with the company, not quarter-to-quarter.",
-      "Take ownership in ambiguous or high-risk moments when the path isn't fully paved.",
-      "Stay effective under pressure — depth, people friction, or delivery crunch.",
+      "Rule: I only ship what I can explain — no hand-waving AI output.",
+      "Reserve sprint time for unassisted deep dives in the codebase.",
+      "Use AI to accelerate, not to skip understanding the system.",
     ],
   },
 ];
+
 
 // ---------------------------------------------------------------------------
 // Featured work — 3 core Pebbles features
