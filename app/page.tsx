@@ -218,7 +218,7 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-10">
-            <ConcernFlow concerns={CONCERNS} goals={GOALS} />
+            <ConcernFlow concerns={CONCERNS} />
           </div>
         </div>
       </section>

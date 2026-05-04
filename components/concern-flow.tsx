@@ -20,7 +20,7 @@ import {
   type NodeProps,
 } from "@xyflow/react";
 import { cn } from "@/lib/utils";
-import type { Concern, Goal } from "@/lib/pebbles-data";
+import type { Concern } from "@/lib/pebbles-data";
 import { ConcernCard } from "@/components/concern-card";
 
 const CONCERN_NODE_W = 320;
@@ -61,17 +61,8 @@ type SatelliteNodeData = {
   text: string;
 };
 
-function planBullets(
-  concern: Concern,
-  goalByNumber: Map<string, Goal>,
-): readonly string[] {
-  const goal = goalByNumber.get(concern.planRef);
-  return goal?.bullets?.length ? goal.bullets : concern.bullets;
-}
-
 function buildNodes(
   concerns: readonly Concern[],
-  goalByNumber: Map<string, Goal>,
   selectedId: string | null,
 ): Node[] {
   const concernNodes: Node[] = concerns.map((c, i) => ({
@@ -93,7 +84,7 @@ function buildNodes(
   const concern = concerns[idx];
   if (!concern) return concernNodes;
 
-  const bullets = [...planBullets(concern, goalByNumber)];
+  const bullets = [...concern.bullets];
   const positions = satellitePositions(idx, bullets.length);
 
   const satNodes: Node[] = bullets.map((text, j) => {
@@ -119,14 +110,13 @@ function buildNodes(
 
 function buildEdges(
   concerns: readonly Concern[],
-  goalByNumber: Map<string, Goal>,
   selectedId: string | null,
 ): Edge[] {
   if (!selectedId) return [];
   const idx = Number(selectedId.replace("c-", ""));
   const concern = concerns[idx];
   if (!concern) return [];
-  const bullets = planBullets(concern, goalByNumber);
+  const bullets = concern.bullets;
   return bullets.map((_, j) => ({
     id: `e-${idx}-${j}`,
     source: selectedId,
@@ -216,21 +206,10 @@ function FitViewOnChange({ selectedId }: { selectedId: string | null }) {
   return null;
 }
 
-export function ConcernFlow({
-  concerns,
-  goals,
-}: {
-  concerns: readonly Concern[];
-  goals: readonly Goal[];
-}) {
-  const goalByNumber = useMemo(
-    () => new Map(goals.map((g) => [g.number, g] as const)),
-    [goals],
-  );
-
+export function ConcernFlow({ concerns }: { concerns: readonly Concern[] }) {
   const initialNodes = useMemo(
-    () => buildNodes(concerns, goalByNumber, null),
-    [concerns, goalByNumber],
+    () => buildNodes(concerns, null),
+    [concerns],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -238,9 +217,9 @@ export function ConcernFlow({
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
-    setNodes(buildNodes(concerns, goalByNumber, selectedId));
-    setEdges(buildEdges(concerns, goalByNumber, selectedId));
-  }, [concerns, goalByNumber, selectedId, setNodes, setEdges]);
+    setNodes(buildNodes(concerns, selectedId));
+    setEdges(buildEdges(concerns, selectedId));
+  }, [concerns, selectedId, setNodes, setEdges]);
 
   const onNodeClick = useCallback((_event: MouseEvent, node: Node) => {
     if (node.type !== "concern") return;
