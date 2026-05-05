@@ -290,11 +290,11 @@ export const GOALS: Goal[] = [
   },
   {
     number: "02",
-    title: "Launch Pebbles to GTM — reach 10,000 users",
+    title: "Launch Pebbles to GTM — reach 5,000 users",
     bullets: [
       "Ship a production-ready release across all platforms.",
       "Track activation and retention from day one of launch.",
-      "Hit 10,000 active users as fast as possible post-launch.",
+      "Hit 5,000 active users as fast as possible post-launch.",
     ],
   },
   {
